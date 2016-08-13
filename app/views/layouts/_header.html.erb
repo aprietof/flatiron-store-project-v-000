@@ -1,8 +1,20 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar nav-tabs navbar-fixed-top">
     <ul class="nav navbar-nav">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="">
+          <img alt="Brand" src="https://cdn-images-1.medium.com/max/800/1*U7fJ32l0c-t5mv9VVW5yeg.png" width="130px">
+        </a>
+      </div>
         <li><%= link_to "Store Home", store_path %> </li>
-        <% if !!@cart %>
-          <li> <%= link_to "Cart", cart_path(current_cart) %></li>
-        <% end %>
+      <% if !current_user %>
+        <li><%= link_to "sign in", new_user_session_path %> </li>
+        <li><%= link_to "Sign up", new_user_registration_path %> </li>
+      <% else %>
+        <li role="presentation"><a href="">Signed in as <%= current_user.email %></a> </li>
+        <li><%= link_to "Sign out", destroy_user_session_path, :method => "delete" %></li>
+      <% end %>
+      <% if !!@cart %>
+        <li> <%= link_to "Cart", cart_path(current_cart) %></li>
+      <% end %>
     </ul>
 </nav>

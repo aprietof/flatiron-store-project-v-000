@@ -6,6 +6,6 @@
 
 <ul class="list-group">
   <% @items.each do |item| %>
-    <li class="list-group-item"><%= item.title %> | <%= number_to_currency(item.price) %> | <%= "$#{item.price.to_f/100}" %> | <%= button_to 'Add to Cart', line_items_path(item_id: item) %></li>
+    <li class="list-group-item"><%= item.title %> | <%= number_to_currency(item.price) %> | <%= "$#{item.price.to_f/100}" %> | <%= button_to 'Add to Cart', line_items_path(item_id: item), class: "btn btn-info" %></li>
   <% end %>
 </ul>
