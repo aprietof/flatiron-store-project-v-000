@@ -1,4 +1,4 @@
-<nav class="navbar nav-tabs navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
     <ul class="nav navbar-nav">
       <div class="navbar-header">
         <a class="navbar-brand" href="">
@@ -13,8 +13,8 @@
         <li role="presentation"><a href="">Signed in as <%= current_user.email %></a> </li>
         <li><%= link_to "Sign out", destroy_user_session_path, :method => "delete" %></li>
       <% end %>
-      <% if !!@cart %>
-        <li> <%= link_to "Cart", cart_path(current_cart) %></li>
+      <% if current_user && current_user.current_cart %>
+        <li> <%= link_to "Cart", cart_path(current_user.current_cart) %></li>
       <% end %>
     </ul>
 </nav>
